@@ -2,17 +2,25 @@ package main
 
 import (
 	"testing"
-	"encoding/csv"
 )
 
-func TestPrintMessage(t *testing.T) {
-	var got = printMessage()
-	var want = "test"
-	if got != want {
-		t.Errorf("printMessage() == %s, want %s", got, want)
+func TestReadCSV_ShouldReturnAllQuestionAnswerPairs(t *testing.T) {
+	expected := 3 // TODO: make this easily changeable
+	records := readCSV()
+	actual := len(records)
+	if expected != actual {
+		t.Errorf("readCSV == %d, expected == %d", actual, expected)
 	}
 }
 
-func TestReadProblemsCSV(t *testing.T) {
+func TestGame_ShouldGiveCorrectScore(t *testing.T) {
+
+}
+
+func TestAskQuestion(t *testing.T) {
+
+}
+
+func TestAnswerQuestion(t *testing.T) {
 	
 }

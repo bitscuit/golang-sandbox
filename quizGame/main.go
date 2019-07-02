@@ -3,32 +3,25 @@ package main
 import (
 	"encoding/csv"
 	"fmt"
-	"io"
 	"log"
 	"os"
 )
 
 func main() {
-	fmt.Println(printMessage())
-	readCSV()
+	fmt.Println("Quiz Game")
+	records := readCSV()
+	fmt.Println(records) // DEBUG
+	fmt.Println(len(records)) // DEBUG
+	
 }
 
-func printMessage() string {
-	return "test"
-}
-
-func readCSV() {
+func readCSV() [][]string {
 	// in := `question,answer`
 	file, _ := os.Open("problems.csv")
 	r := csv.NewReader(file)
-	for {
-		record, err := r.Read()
-		if err == io.EOF {
-			break
-		}
-		if err != nil {
-			log.Fatal(err)
-		}
-		fmt.Println(record[0], ",", record[1])
+	records, err := r.ReadAll()
+	if err != nil {
+		log.Fatal(err)
 	}
+	return records
 }
